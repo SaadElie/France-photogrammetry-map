@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>France Photogrammetry Map</title>
+    <!-- Link to Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <!-- Include Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map and set its view to France
+        var map = L.map('map').setView([46.603354, 1.888334], 6); // France coordinates
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Array of locations with Sketchfab links
+        var locations = [
+            {
+                lat: 48.858844, 
+                lng: 2.294351, 
+                name: 'Eiffel Tower', 
+                sketchfabUrl: 'https://sketchfab.com/models/your-sketchfab-id-1'
+            },
+            {
+                lat: 43.296482, 
+                lng: 5.36978, 
+                name: 'Marseille Cathedral', 
+                sketchfabUrl: 'https://sketchfab.com/models/your-sketchfab-id-2'
+            }
+            // Add more locations as needed
+        ];
+
+        // Loop through the locations and add markers
+        locations.forEach(function(location) {
+            var marker = L.marker([location.lat, location.lng]).addTo(map)
+                .bindPopup('<b>' + location.name + '</b><br><a href="' + location.sketchfabUrl + '" target="_blank">View in 3D</a>');
+        });
+    </script>
+</body>
+</html>
