@@ -15,6 +15,7 @@
             width: 400px; /* Default width */
             height: 300px; /* Default height */
             border: none;
+            transition: width 0.3s ease, height 0.3s ease; /* Smooth transition */
         }
         .popup-title {
             font-weight: bold;
@@ -45,7 +46,7 @@
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        // Locations data embedded directly into the code
+        // Locations data embedded directly into the code with original links
         var locations = [
             {
                 lat: 48.837503188628844,
@@ -109,8 +110,16 @@
             var currentHeight = parseInt(getComputedStyle(iframe).height);
 
             // Calculate the new size
-            iframe.style.width = (currentWidth * factor) + 'px';
-            iframe.style.height = (currentHeight * factor) + 'px';
+            var newWidth = currentWidth * factor;
+            var newHeight = currentHeight * factor;
+
+            // Set maximum limits for the iframe size
+            var maxWidth = 600; // Maximum width for the iframe
+            var maxHeight = 450; // Maximum height for the iframe
+
+            // Apply the new size without exceeding maximum limits
+            iframe.style.width = Math.min(newWidth, maxWidth) + 'px';
+            iframe.style.height = Math.min(newHeight, maxHeight) + 'px';
         }
     </script>
 </body>
