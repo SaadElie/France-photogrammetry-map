@@ -18,22 +18,14 @@
 
     <!-- Include Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <!-- Include Mapbox GL JS -->
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
-
     <script>
-        // Set your Mapbox access token
-        L.mapboxAccessToken = 'your-mapbox-access-token-here'; // Make sure to replace this with your actual access token
-
         // Initialize the map and set its view to France
         var map = L.map('map').setView([46.603354, 1.888334], 6); // France coordinates
 
-        // Add Mapbox tile layer using your custom style
-        L.tileLayer('https://api.mapbox.com/styles/v1/eliesaad/cm2hph884009f01pehkil86is/tiles/256/{z}/{x}/{y}?access_token=' + L.mapboxAccessToken, {
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
-            tileSize: 512,
-            zoomOffset: -1,
-            attribution: '© Mapbox © OpenStreetMap contributors'
+            attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
         // Array of locations with Sketchfab links
