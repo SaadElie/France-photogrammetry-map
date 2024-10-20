@@ -11,13 +11,14 @@
             height: 100vh;
             width: 100%;
         }
-        .popup-iframe {
-            width: 100%; /* Set to 100% of the parent container */
-            height: 300px; /* Set a fixed height for better visibility */
-            border: none;
-        }
         .popup-content {
-            width: 400px; /* Fixed width for the popup content */
+            max-width: 400px; /* Set a maximum width for the popup */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+        .popup-iframe {
+            width: 100%; /* Responsive width */
+            height: 250px; /* Set a fixed height for better visibility */
+            border: none;
         }
         .popup-title {
             font-weight: bold;
