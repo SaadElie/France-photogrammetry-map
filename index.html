@@ -33,19 +33,22 @@
             {
                 lat: 48.837503188628844,  
                 lng: 2.296401288634741, 
-                name: 'Fontain Wallace', 
+                name: 'Fontaine Wallace', 
+                description: 'A beautiful Wallace fountain in Paris.',
                 sketchfabUrl: 'https://sketchfab.com/models/d34337a6fd064d8eba8427b479443136/embed'
             },
             {
                 lat: 48.83669398063665, 
                 lng:  2.298092749152374, 
-                name: 'La Poste', 
+                name: 'La Poste',
+                description: 'A beautiful Wallace fountain in Paris.',
                 sketchfabUrl: 'https://sketchfab.com/models/d7b6327f6e2f4b4ebcb009170f9b1cd8/embed'
             },
             {
                 lat: 48.87559098671575,  
                 lng: 2.3743688157759397, 
                 name: 'Projet DSA', 
+                description: 'A beautiful Wallace fountain in Paris.',
                 sketchfabUrl: 'https://sketchfab.com/models/bce9e6b71295463f996ec52dd00b73c3/embed'
             },
             // Add more locations as needed
@@ -54,7 +57,12 @@
         // Loop through the locations and add markers
         locations.forEach(function(location) {
             var marker = L.marker([location.lat, location.lng]).addTo(map)
-                .bindPopup('<b>' + location.name + '</b><br><iframe width="300" height="200" src="' + location.sketchfabUrl + '" frameborder="0" allow="autoplay; fullscreen; vr" allowfullscreen></iframe>');
+                var popupContent = 
+                '<div class="popup-content">' +
+                    '<div class="popup-title">' + location.name + '</div>' +
+                    '<div class="popup-description">' + location.description + '</div>' +
+                    '<iframe width="400" height="300" src="' + location.sketchfabUrl + '" frameborder="0" allow="autoplay; fullscreen; vr" allowfullscreen></iframe>' +
+                '</div>';
         });
     </script>
 </body>
