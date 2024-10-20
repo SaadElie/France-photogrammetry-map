@@ -40,7 +40,7 @@
         }).addTo(map);
 
         // Fetch location data from JSON file
-        fetch('https://github.com/SaadElie/France-photogrammetry-map/blob/main/locations.json')
+        fetch('locations.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
