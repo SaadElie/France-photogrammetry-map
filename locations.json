@@ -19,5 +19,12 @@
         "name": "Projet DSA",
         "description": "A cultural landmark showcasing modern architecture.",
         "sketchfabUrl": "https://luma.com/models/model-id-3/embed"
-    }
+    },
+     {
+        "lat": 48.56252306303693,
+        "lng": 3.287923539792961,
+        "name": "Fontaine",
+        "description": "A historic post office in Paris.",
+        "sketchfabUrl": "https://lumalabs.ai/embed/d49e62c5-ae5e-4cba-b7a2-ee858aeb612b?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false"
+    },
 ]
