@@ -51,13 +51,18 @@
     <!-- Include Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
+        // Replace this with your Mapbox access token
+        const mapboxAccessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
+
         // Initialize the map and set its view to France
         var map = L.map('map').setView([46.603354, 1.888334], 6); // France coordinates
 
-        // Add OpenStreetMap tile layer
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap contributors'
+        // Add Mapbox tile layer
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
+            id: 'eliesaad/cm2hph884009f01pehkil86is', // Your Mapbox style ID
+            tileSize: 512,
+            zoomOffset: -1,
+            attribution: '© Mapbox © OpenStreetMap'
         }).addTo(map);
 
         // Locations data embedded directly into the code
