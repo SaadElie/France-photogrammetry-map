@@ -1,0 +1,23 @@
+[
+    {
+        "lat": 48.837503188628844,
+        "lng": 2.296401288634741,
+        "name": "Fontaine Wallace",
+        "description": "A beautiful Wallace fountain in Paris.",
+        "sketchfabUrl": "https://luma.com/models/model-id-1/embed"
+    },
+    {
+        "lat": 48.83669398063665,
+        "lng": 2.298092749152374,
+        "name": "La Poste",
+        "description": "A historic post office in Paris.",
+        "sketchfabUrl": "https://luma.com/models/model-id-2/embed"
+    },
+    {
+        "lat": 48.87559098671575,
+        "lng": 2.3743688157759397,
+        "name": "Projet DSA",
+        "description": "A cultural landmark showcasing modern architecture.",
+        "sketchfabUrl": "https://luma.com/models/model-id-3/embed"
+    }
+]
