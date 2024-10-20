@@ -1,30 +1,117 @@
-[
-    {
-        "lat": 48.837503188628844,
-        "lng": 2.296401288634741,
-        "name": "Fontaine Wallace",
-        "description": "A beautiful Wallace fountain in Paris.",
-        "sketchfabUrl": "https://luma.com/models/model-id-1/embed"
-    },
-    {
-        "lat": 48.83669398063665,
-        "lng": 2.298092749152374,
-        "name": "La Poste",
-        "description": "A historic post office in Paris.",
-        "sketchfabUrl": "https://luma.com/models/model-id-2/embed"
-    },
-    {
-        "lat": 48.87559098671575,
-        "lng": 2.3743688157759397,
-        "name": "Projet DSA",
-        "description": "A cultural landmark showcasing modern architecture.",
-        "sketchfabUrl": "https://luma.com/models/model-id-3/embed"
-    },
-     {
-        "lat": 48.56252306303693,
-        "lng": 3.287923539792961,
-        "name": "Fontaine",
-        "description": "A historic post office in Paris.",
-        "sketchfabUrl": "https://lumalabs.ai/embed/d49e62c5-ae5e-4cba-b7a2-ee858aeb612b?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false"
-    },
-]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>France Photogrammetry Map</title>
+    <!-- Link to Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+        .popup-iframe {
+            width: 400px; /* Default width */
+            height: 300px; /* Default height */
+            border: none;
+        }
+        .popup-title {
+            font-weight: bold;
+        }
+        .popup-description {
+            margin: 10px 0;
+        }
+        .popup-buttons {
+            margin: 10px 0;
+        }
+        .popup-buttons button {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <!-- Include Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map and set its view to France
+        var map = L.map('map').setView([46.603354, 1.888334], 6); // France coordinates
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Locations data embedded directly into the code
+        var locations = [
+            {
+                lat: 48.837503188628844,
+                lng: 2.296401288634741,
+                name: "Fontaine Wallace",
+                description: "A beautiful Wallace fountain in Paris.",
+                sketchfabUrl: "https://luma.com/models/model-id-1/embed"
+            },
+            {
+                lat: 48.83669398063665,
+                lng: 2.298092749152374,
+                name: "La Poste",
+                description: "A historic post office in Paris.",
+                sketchfabUrl: "https://luma.com/models/model-id-2/embed"
+            },
+            {
+                lat: 48.87559098671575,
+                lng: 2.3743688157759397,
+                name: "Projet DSA",
+                description: "A cultural landmark showcasing modern architecture.",
+                sketchfabUrl: "https://luma.com/models/model-id-3/embed"
+            },
+            {
+                lat: 48.56252306303693,
+                lng: 3.287923539792961,
+                name: "Fontaine",
+                description: "A historic post office in Paris.",
+                sketchfabUrl: "https://lumalabs.ai/embed/d49e62c5-ae5e-4cba-b7a2-ee858aeb612b?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false"
+            },
+        ];
+
+        // Loop through the locations and add markers
+        locations.forEach(function(location) {
+            var marker = L.marker([location.lat, location.lng]).addTo(map);
+            
+            // Create the popup content
+            var popupContent = 
+                '<div class="popup-content">' +
+                    '<div class="popup-title">' + location.name + '</div>' +
+                    '<div class="popup-description">' + location.description + '</div>' +
+                    '<div class="popup-buttons">' +
+                        '<button onclick="resizeIframe(this, 2)">X2</button>' +
+                        '<button onclick="resizeIframe(this, 4)">X4</button>' +
+                    '</div>' +
+                    '<iframe class="popup-iframe" src="' + location.sketchfabUrl + '" allow="autoplay; fullscreen; vr" allowfullscreen></iframe>' +
+                '</div>';
+            
+            // Bind the popup content to the marker
+            marker.bindPopup(popupContent);
+        });
+
+        // Function to resize the iframe
+        function resizeIframe(button, factor) {
+            // Get the popup content element
+            var popupContent = button.closest('.popup-content');
+            // Find the iframe within the popup
+            var iframe = popupContent.querySelector('.popup-iframe');
+
+            // Get the current size
+            var currentWidth = parseInt(getComputedStyle(iframe).width);
+            var currentHeight = parseInt(getComputedStyle(iframe).height);
+
+            // Calculate the new size
+            iframe.style.width = (currentWidth * factor) + 'px';
+            iframe.style.height = (currentHeight * factor) + 'px';
+        }
+    </script>
+</body>
+</html>
