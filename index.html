@@ -11,10 +11,16 @@
             height: 100vh;
             width: 100%;
         }
+        .popup-content {
+            display: flex; /* Use flexbox to align items */
+            flex-direction: column; /* Arrange elements vertically */
+            max-width: 600px; /* Set a max width for the popup */
+        }
         .popup-iframe {
-            width: 400px; /* Default width */
+            width: 100%; /* Make the iframe take full width of the popup */
             height: 300px; /* Default height */
             border: none;
+            transition: height 0.3s ease; /* Smooth transition */
         }
         .popup-title {
             font-weight: bold;
@@ -27,6 +33,15 @@
         }
         .popup-buttons button {
             margin-right: 5px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup-buttons button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -75,15 +90,15 @@
                 description: "A historic post office in Paris.",
                 sketchfabUrl: "https://lumalabs.ai/embed/d49e62c5-ae5e-4cba-b7a2-ee858aeb612b?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false"
             },
-             {
+            {
                 lat: 43.77578766688718,
                 lng: 7.506737483083839,
                 name: "Fontaine de Menton",
                 description: "A cultural landmark showcasing modern architecture.",
                 sketchfabUrl: "https://lumalabs.ai/embed/2c86ece7-5953-4ad8-9565-2540bec5375e?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false"
             },
-             {
-                lat: 43.776401876458245, 
+            {
+                lat: 43.776401876458245,
                 lng: 7.508034379935028,
                 name: "Jardin de Menton",
                 description: "A cultural landmark showcasing modern architecture.",
@@ -102,7 +117,7 @@
                     '<div class="popup-description">' + location.description + '</div>' +
                     '<div class="popup-buttons">' +
                         '<button onclick="resizeIframe(this, 2)">X2</button>' +
-                        '<button onclick="resizeIframe(this, 4)">X4</button>' +
+                        '<button onclick="resizeIframe(this, 4)">X4</button>' + // Added X4 button
                     '</div>' +
                     '<iframe class="popup-iframe" src="' + location.sketchfabUrl + '" allow="autoplay; fullscreen; vr" allowfullscreen></iframe>' +
                 '</div>';
@@ -125,6 +140,14 @@
             // Calculate the new size
             iframe.style.width = (currentWidth * factor) + 'px';
             iframe.style.height = (currentHeight * factor) + 'px';
+
+            // Set maximum limits for width and height
+            var maxWidth = 800; // Maximum width for the iframe
+            var maxHeight = 600; // Maximum height for the iframe
+
+            // Apply the maximum constraints
+            iframe.style.width = Math.min(currentWidth * factor, maxWidth) + 'px';
+            iframe.style.height = Math.min(currentHeight * factor, maxHeight) + 'px';
         }
     </script>
 </body>
