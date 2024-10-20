@@ -39,36 +39,53 @@
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        // Fetch location data from JSON file
-        fetch('locations.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(locations => {
-                console.log(locations); // Log the locations to check
+        // Locations data embedded directly into the code
+        var locations = [
+            {
+                lat: 48.837503188628844,
+                lng: 2.296401288634741,
+                name: "Fontaine Wallace",
+                description: "A beautiful Wallace fountain in Paris.",
+                sketchfabUrl: "https://luma.com/models/model-id-1/embed"
+            },
+            {
+                lat: 48.83669398063665,
+                lng: 2.298092749152374,
+                name: "La Poste",
+                description: "A historic post office in Paris.",
+                sketchfabUrl: "https://luma.com/models/model-id-2/embed"
+            },
+            {
+                lat: 48.87559098671575,
+                lng: 2.3743688157759397,
+                name: "Projet DSA",
+                description: "A cultural landmark showcasing modern architecture.",
+                sketchfabUrl: "https://luma.com/models/model-id-3/embed"
+            },
+            {
+                lat: 48.56252306303693,
+                lng: 3.287923539792961,
+                name: "Fontaine",
+                description: "A historic post office in Paris.",
+                sketchfabUrl: "https://lumalabs.ai/embed/d49e62c5-ae5e-4cba-b7a2-ee858aeb612b?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false"
+            },
+        ];
 
-                // Loop through the locations and add markers
-                locations.forEach(function(location) {
-                    var marker = L.marker([location.lat, location.lng]).addTo(map);
-                    
-                    // Create the popup content
-                    var popupContent = 
-                        '<div class="popup-content">' +
-                            '<div class="popup-title">' + location.name + '</div>' +
-                            '<div class="popup-description">' + location.description + '</div>' +
-                            '<iframe class="popup-iframe" src="' + location.sketchfabUrl + '" allow="autoplay; fullscreen; vr" allowfullscreen></iframe>' +
-                        '</div>';
-                    
-                    // Bind the popup content to the marker
-                    marker.bindPopup(popupContent);
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching the locations:', error);
-            });
+        // Loop through the locations and add markers
+        locations.forEach(function(location) {
+            var marker = L.marker([location.lat, location.lng]).addTo(map);
+            
+            // Create the popup content
+            var popupContent = 
+                '<div class="popup-content">' +
+                    '<div class="popup-title">' + location.name + '</div>' +
+                    '<div class="popup-description">' + location.description + '</div>' +
+                    '<iframe class="popup-iframe" src="' + location.sketchfabUrl + '" allow="autoplay; fullscreen; vr" allowfullscreen></iframe>' +
+                '</div>';
+            
+            // Bind the popup content to the marker
+            marker.bindPopup(popupContent);
+        });
     </script>
 </body>
 </html>
