@@ -11,6 +11,19 @@
             height: 100vh;
             width: 100%;
         }
+
+        /* Optional styling for the popup */
+        .popup-content {
+            text-align: center;
+        }
+        .popup-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .popup-description {
+            margin: 5px 0;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -41,14 +54,14 @@
                 lat: 48.83669398063665, 
                 lng:  2.298092749152374, 
                 name: 'La Poste',
-                description: 'A beautiful Wallace fountain in Paris.',
+                description: 'A historic post office in Paris.',
                 sketchfabUrl: 'https://sketchfab.com/models/d7b6327f6e2f4b4ebcb009170f9b1cd8/embed'
             },
             {
                 lat: 48.87559098671575,  
                 lng: 2.3743688157759397, 
                 name: 'Projet DSA', 
-                description: 'A beautiful Wallace fountain in Paris.',
+                description: 'A cultural landmark showcasing modern architecture.',
                 sketchfabUrl: 'https://sketchfab.com/models/bce9e6b71295463f996ec52dd00b73c3/embed'
             },
             // Add more locations as needed
@@ -56,13 +69,18 @@
 
         // Loop through the locations and add markers
         locations.forEach(function(location) {
-            var marker = L.marker([location.lat, location.lng]).addTo(map)
-                var popupContent = 
+            var marker = L.marker([location.lat, location.lng]).addTo(map);
+            
+            // Create the popup content
+            var popupContent = 
                 '<div class="popup-content">' +
                     '<div class="popup-title">' + location.name + '</div>' +
                     '<div class="popup-description">' + location.description + '</div>' +
                     '<iframe width="400" height="300" src="' + location.sketchfabUrl + '" frameborder="0" allow="autoplay; fullscreen; vr" allowfullscreen></iframe>' +
                 '</div>';
+            
+            // Bind the popup content to the marker
+            marker.bindPopup(popupContent);
         });
     </script>
 </body>
