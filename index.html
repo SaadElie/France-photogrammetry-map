@@ -50,15 +50,15 @@
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        // Replace this with your Mapbox access token
-        const mapboxAccessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
+        // Your Mapbox access token
+        const mapboxAccessToken = 'pk.eyJ1IjoiZWxpZXNhYWQiLCJhIjoiY2xsYmFiaDkzMDU0aDNtbWw1dzZkMjVlZiJ9.8T_UtIPFSX2SlPBSGA21ug';
 
         // Initialize the map and set its view to France
         var map = L.map('map').setView([46.603354, 1.888334], 6); // France coordinates
 
-        // Add Mapbox tile layer (try using default streets style)
+        // Add Mapbox tile layer
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
-            id: 'mapbox/streets-v11', // Change to 'eliesaad/cm2hph884009f01pehkil86is' for your custom style
+            id: 'eliesaad/cm2hph884009f01pehkil86is', // Your custom Mapbox style ID
             tileSize: 512,
             zoomOffset: -1,
             attribution: '© Mapbox © OpenStreetMap'
@@ -138,9 +138,11 @@
             var currentWidth = parseInt(getComputedStyle(iframe).width);
             var currentHeight = parseInt(getComputedStyle(iframe).height);
 
+            // Set new width and height based on factor
             iframe.style.width = (currentWidth * factor) + 'px';
             iframe.style.height = (currentHeight * factor) + 'px';
 
+            // Limit maximum width and height to prevent overflow
             var maxWidth = 800;
             var maxHeight = 600;
 
