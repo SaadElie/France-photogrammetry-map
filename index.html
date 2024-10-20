@@ -11,22 +11,22 @@
             height: 100vh;
             width: 100%;
         }
-        .popup-content {
-            max-width: 400px; /* Set a maximum width for the popup */
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
-        }
         .popup-iframe {
-            width: 100%; /* Responsive width */
-            height: 250px; /* Set a fixed height for better visibility */
+            width: 400px; /* Default width */
+            height: 300px; /* Default height */
             border: none;
         }
         .popup-title {
             font-weight: bold;
-            font-size: 16px; /* Adjusted font size */
         }
         .popup-description {
             margin: 10px 0;
-            font-size: 14px; /* Adjusted font size */
+        }
+        .popup-buttons {
+            margin: 10px 0;
+        }
+        .popup-buttons button {
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -52,35 +52,21 @@
                 lng: 2.296401288634741,
                 name: "Fontaine Wallace",
                 description: "A beautiful Wallace fountain in Paris.",
-                sketchfabUrl: "https://sketchfab.com/models/d34337a6fd064d8eba8427b479443136/embed"
+                sketchfabUrl: "https://luma.com/models/model-id-1/embed"
             },
             {
                 lat: 48.83669398063665,
                 lng: 2.298092749152374,
                 name: "La Poste",
                 description: "A historic post office in Paris.",
-                sketchfabUrl: "https://sketchfab.com/models/d7b6327f6e2f4b4ebcb009170f9b1cd8/embed"
+                sketchfabUrl: "https://luma.com/models/model-id-2/embed"
             },
             {
                 lat: 48.87559098671575,
                 lng: 2.3743688157759397,
                 name: "Projet DSA",
                 description: "A cultural landmark showcasing modern architecture.",
-                sketchfabUrl: "https://sketchfab.com/models/bce9e6b71295463f996ec52dd00b73c3/embed"
-            },
-            {
-                lat: 43.77578766688718,
-                lng: 7.506737483083839,
-                name: "Fontaine de Menton",
-                description: "A cultural landmark showcasing modern architecture.",
-                sketchfabUrl: "https://lumalabs.ai/embed/2c86ece7-5953-4ad8-9565-2540bec5375e?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false"
-            },
-             {
-                lat: 43.776401876458245, 
-                lng: 7.508034379935028,
-                name: "Jardin de Menton",
-                description: "A cultural landmark showcasing modern architecture.",
-                sketchfabUrl: "https://lumalabs.ai/embed/93cda24d-2bbd-44ef-ba39-96e7da100155?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false"
+                sketchfabUrl: "https://luma.com/models/model-id-3/embed"
             },
             {
                 lat: 48.56252306303693,
@@ -100,12 +86,32 @@
                 '<div class="popup-content">' +
                     '<div class="popup-title">' + location.name + '</div>' +
                     '<div class="popup-description">' + location.description + '</div>' +
+                    '<div class="popup-buttons">' +
+                        '<button onclick="resizeIframe(this, 2)">X2</button>' +
+                        '<button onclick="resizeIframe(this, 4)">X4</button>' +
+                    '</div>' +
                     '<iframe class="popup-iframe" src="' + location.sketchfabUrl + '" allow="autoplay; fullscreen; vr" allowfullscreen></iframe>' +
                 '</div>';
             
             // Bind the popup content to the marker
             marker.bindPopup(popupContent);
         });
+
+        // Function to resize the iframe
+        function resizeIframe(button, factor) {
+            // Get the popup content element
+            var popupContent = button.closest('.popup-content');
+            // Find the iframe within the popup
+            var iframe = popupContent.querySelector('.popup-iframe');
+
+            // Get the current size
+            var currentWidth = parseInt(getComputedStyle(iframe).width);
+            var currentHeight = parseInt(getComputedStyle(iframe).height);
+
+            // Calculate the new size
+            iframe.style.width = (currentWidth * factor) + 'px';
+            iframe.style.height = (currentHeight * factor) + 'px';
+        }
     </script>
 </body>
 </html>
