@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
         #map {
-            height: 100vh; /* Make the map take full height of the viewport */
+            height: 100vh;
             width: 100%;
         }
         .popup-content {
@@ -50,18 +50,13 @@
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        // Your Mapbox access token
-        const mapboxAccessToken = 'pk.eyJ1IjoiZWxpZXNhYWQiLCJhIjoiY2xsMTk4NnhzMG9jbDNkcXJxMnVza2ZlMCJ9.1S_za7Io6GuiWjkv8yEjpw';
-
         // Initialize the map and set its view to France
         var map = L.map('map').setView([46.603354, 1.888334], 6); // France coordinates
 
-        // Add Mapbox tile layer
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
-            id: 'eliesaad/cm2hph884009f01pehkil86is', // Your custom Mapbox style ID
-            tileSize: 512,
-            zoomOffset: -1,
-            attribution: '© Mapbox © OpenStreetMap'
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
         // Locations data embedded directly into the code
