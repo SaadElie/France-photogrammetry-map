@@ -15,7 +15,6 @@
             width: 400px; /* Default width */
             height: 300px; /* Default height */
             border: none;
-            transition: width 0.3s ease, height 0.3s ease; /* Smooth transition */
         }
         .popup-title {
             font-weight: bold;
@@ -46,28 +45,28 @@
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        // Locations data embedded directly into the code with original links
+        // Locations data embedded directly into the code
         var locations = [
             {
                 lat: 48.837503188628844,
                 lng: 2.296401288634741,
                 name: "Fontaine Wallace",
                 description: "A beautiful Wallace fountain in Paris.",
-                sketchfabUrl: "https://luma.com/models/model-id-1/embed"
+                sketchfabUrl: "https://sketchfab.com/models/d34337a6fd064d8eba8427b479443136/embed"
             },
             {
                 lat: 48.83669398063665,
                 lng: 2.298092749152374,
                 name: "La Poste",
                 description: "A historic post office in Paris.",
-                sketchfabUrl: "https://luma.com/models/model-id-2/embed"
+                sketchfabUrl: "https://sketchfab.com/models/d7b6327f6e2f4b4ebcb009170f9b1cd8/embed"
             },
             {
                 lat: 48.87559098671575,
                 lng: 2.3743688157759397,
                 name: "Projet DSA",
                 description: "A cultural landmark showcasing modern architecture.",
-                sketchfabUrl: "https://luma.com/models/model-id-3/embed"
+                sketchfabUrl: "https://sketchfab.com/models/bce9e6b71295463f996ec52dd00b73c3/embed"
             },
             {
                 lat: 48.56252306303693,
@@ -110,16 +109,8 @@
             var currentHeight = parseInt(getComputedStyle(iframe).height);
 
             // Calculate the new size
-            var newWidth = currentWidth * factor;
-            var newHeight = currentHeight * factor;
-
-            // Set maximum limits for the iframe size
-            var maxWidth = 600; // Maximum width for the iframe
-            var maxHeight = 450; // Maximum height for the iframe
-
-            // Apply the new size without exceeding maximum limits
-            iframe.style.width = Math.min(newWidth, maxWidth) + 'px';
-            iframe.style.height = Math.min(newHeight, maxHeight) + 'px';
+            iframe.style.width = (currentWidth * factor) + 'px';
+            iframe.style.height = (currentHeight * factor) + 'px';
         }
     </script>
 </body>
