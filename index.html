@@ -15,6 +15,7 @@
         /* Optional styling for the popup */
         .popup-content {
             text-align: center;
+            width: 300px;  /* Set a specific width for the popup */
         }
         .popup-title {
             font-size: 16px;
@@ -23,6 +24,11 @@
         .popup-description {
             margin: 5px 0;
             font-size: 14px;
+        }
+        /* Adjust iframe styling */
+        .popup-iframe {
+            width: 100%; /* Make iframe responsive */
+            height: 200px; /* Set a fixed height for the iframe */
         }
     </style>
 </head>
@@ -76,7 +82,7 @@
                 '<div class="popup-content">' +
                     '<div class="popup-title">' + location.name + '</div>' +
                     '<div class="popup-description">' + location.description + '</div>' +
-                    '<iframe width="400" height="300" src="' + location.sketchfabUrl + '" frameborder="0" allow="autoplay; fullscreen; vr" allowfullscreen></iframe>' +
+                    '<iframe class="popup-iframe" src="' + location.sketchfabUrl + '" frameborder="0" allow="autoplay; fullscreen; vr" allowfullscreen></iframe>' +
                 '</div>';
             
             // Bind the popup content to the marker
